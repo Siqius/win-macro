@@ -1,5 +1,13 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('node:path');
+import { app, BrowserWindow, globalShortcut } from "electron";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export function rebindKey() {
+  app.quit()
+}
 
 const createWindow = () => {
   // Create the browser window.
@@ -11,11 +19,11 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   });
-
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('./src/index.html');
 }
 
 app.whenReady().then(() => {
+
   createWindow();
 
   app.on('activate', () => {
@@ -24,10 +32,5 @@ app.whenReady().then(() => {
 })
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+  app.quit();
 })
-
-function function1() {
-    document.querySelector("#node-version").innerHTML = "Hello world!!!!!";
-    console.log("Hello!");
-}
