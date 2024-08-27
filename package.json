@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
-    "electron": "^31.4.0"
+    "electron": "^31.4.0",
+    "robotjs": "^0.6.0"
   },
   "name": "autoclicker",
   "version": "1.0.0",
@@ -53,7 +54,6 @@
     "mimic-response": "^1.0.1",
     "ms": "^2.1.2",
     "normalize-url": "^6.1.0",
-    "nutjs": "^0.0.1",
     "object-keys": "^1.1.1",
     "once": "^1.4.0",
     "p-cancelable": "^2.1.1",

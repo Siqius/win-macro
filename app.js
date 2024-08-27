@@ -1,12 +1,17 @@
-import { app, BrowserWindow, globalShortcut } from "electron";
+import { app, BrowserWindow, globalShortcut, ipcMain } from "electron";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { mouse } from "nutjs"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export function rebindKey() {
-  app.quit()
+function rebindKey(event, key) {
+  globalShortcut.unregisterAll();
+  let shortcut = `CommandOrControl+${key.toUpperCase()}`
+  globalShortcut.register(shortcut, () => {
+    mouse.leftClick();
+});
 }
 
 const createWindow = () => {
@@ -24,10 +29,13 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
 
+  ipcMain.on("rebind-key", rebindKey);
   createWindow();
 
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
   })
 })
 
