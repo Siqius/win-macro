@@ -1,7 +1,8 @@
 import { app, BrowserWindow, globalShortcut, ipcMain } from "electron";
+import { start, stop } from "windows-input-controller";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { mouse } from "nutjs"
+import macro from "./macro.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,8 +11,9 @@ function rebindKey(event, key) {
   globalShortcut.unregisterAll();
   let shortcut = `CommandOrControl+${key.toUpperCase()}`
   globalShortcut.register(shortcut, () => {
-    mouse.leftClick();
-});
+    stop();
+    start(macro);
+  });
 }
 
 const createWindow = () => {
