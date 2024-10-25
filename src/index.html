@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Hello World!</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <h1>Hello World!</h1>
-    <button type="button" id="button">hello</button>
-    <input type="text" id="key" placeholder="keybind (A-Z)">
-    <script src="./index.js"></script>
-</body>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo-div">
+        <img src="./assets/logo2.png" />
+      </div>
+      <div id="header-buttons-div">
+        <button id="close-button" onclick="closeApp()">
+          <img src="./assets/close.png" alt="close app" />
+        </button>
+        <button onclick="minimizeApp()">
+          <img src="./assets/minimize.png" alt="minimize app" />
+        </button>
+        <button onclick="openSettings()">
+          <img src="./assets/settings.png" alt="open settings" />
+        </button>
+      </div>
+    </div>
+    <div id="main-div">
+      <div id="macro-section">
+        <div id="text-section">
+          <h2>File</h2>
+        </div>
+        <div id="button-section">
+          <button>Create</button>
+          <button id="select-macro-button" onclick="selectFile()">
+            Select
+          </button>
+          <input id="select-file" type="file" />
+          <button>Edit</button>
+          <h3 id="file-selected">
+            Selected File: <br /><span id="file-name"></span>
+          </h3>
+        </div>
+      </div>
+      <div id="record-section">
+        <div>
+          <h2>Record</h2>
+          <h3>Start/Stop recording</h3>
+          <div>
+            <p>Bind:</p>
+            <button onclick="rebindRecordKey()">
+              (ctrl) + <span id="record-button-keybind-key">a</span>
+            </button>
+            <div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Recording Name</h3>
+          <input type="text" placeholder="Name" />
+          <button>Save</button>
+        </div>
+      </div>
+      <div id="start-macro-section"></div>
+    </div>
+  </body>
 </html>

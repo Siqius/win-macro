@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  user-select: none;
+  font-family: "Oxanium", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #323232;
+}
+
+#main-div {
+  button {
+    width: 22%;
+    aspect-ratio: 3/1;
+    cursor: pointer;
+    background-color: #212121;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border: 0.1rem solid #848484;
+    margin-left: calc(7%);
+    transition: 100ms;
+
+    &:hover {
+      border: 0.2rem solid #a0a0a0;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+#header {
+  width: 100%;
+  height: 10%;
+  background-color: #232323;
+  user-select: all;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: space-between;
+
+  * {
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+    user-select: none;
+    -webkit-app-region: no-drag;
+  }
+
+  #logo-div {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    img {
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  #header-buttons-div {
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    float: right;
+
+    button {
+      background-color: #00000000;
+      height: 100%;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+
+      img {
+        transition: 100ms;
+        height: 60%;
+        margin-top: 10%;
+        aspect-ratio: 1/1;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.219);
+      }
+    }
+
+    #close-button:hover {
+      background-color: red;
+    }
+  }
+}
+
+#main-div {
+  width: 100%;
+  height: 90%;
+
+  #macro-section {
+    width: 100%;
+    height: 36%;
+    background-color: #323232;
+    border-top: #161616 solid 0.2rem;
+    margin-top: -0.2rem;
+
+    #text-section {
+      width: 100%;
+      height: 40%;
+      position: relative;
+
+      h2 {
+        position: absolute;
+        top: 25%;
+        left: 5%;
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+
+    #button-section {
+      width: 100%;
+      height: 49%;
+      margin-top: 3%;
+
+      h3 {
+        position: absolute;
+        top: 32%;
+        left: 38%;
+        color: white;
+        font-size: 0.8rem;
+        max-width: 7rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      input {
+        display: none;
+      }
+
+      #select-macro-button {
+        width: 27%;
+        aspect-ratio: 5/1;
+      }
+    }
+  }
+
+  #record-section {
+    width: 100%;
+    height: 36%;
+    background-color: #272727;
+    border-top: #161616 solid 0.2rem;
+    margin-top: -0.2rem;
+    display: flex;
+
+    div {
+      width: 50%;
+      height: 100%;
+
+      h3 {
+        color: white;
+        margin-left: 10%;
+        margin-top: 10%;
+      }
+
+      button {
+        width: 60%;
+        aspect-ratio: 4/1;
+        margin-left: 20%;
+        margin-top: 5%;
+      }
+
+      input {
+        background-color: #3d3d3d;
+        border: 0.1rem solid #909090;
+        width: 80%;
+        aspect-ratio: 6/1;
+        margin-left: 10%;
+        margin-top: 5%;
+        font-size: 1rem;
+      }
+
+      &:first-child {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          color: white;
+          margin-left: 10%;
+        }
+
+        h3 {
+          margin-top: 10%;
+          width: 90%;
+          font-size: 1rem;
+        }
+
+        div {
+          width: 100%;
+          margin-top: 10%;
+          margin-left: 10%;
+          display: flex;
+          flex-direction: row;
+
+          p {
+            font-size: 1rem;
+            color: white;
+          }
+
+          button {
+            margin: 0;
+            margin-top: -5%;
+            margin-left: 5%;
+            width: 40%;
+            height: 70%;
+            aspect-ratio: 8/1;
+          }
+
+          div {
+            width: 20px;
+            height: 20px;
+            margin-top: -2%;
+            background-color: rgba(255, 0, 0, 0.314);
+            border-radius: 100%;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+
+  #start-macro-section {
+    width: 100%;
+    height: 28%;
+    background-color: #323232;
+    border-top: #161616 solid 0.2rem;
+    margin-top: -0.2rem;
+  }
+}

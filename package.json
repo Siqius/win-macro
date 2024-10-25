@@ -6,7 +6,7 @@
   "name": "autoclicker",
   "version": "1.0.0",
   "type": "module",
-  "description": "autoclicker built in electronjs",
+  "description": "Autoclicker/Macro app built in electronjs",
   "main": "app.js",
   "dependencies": {
     "boolean": "^3.2.0",
