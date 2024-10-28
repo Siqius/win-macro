@@ -1,10 +1,24 @@
 const fileInput = document.querySelector("#select-file");
 const recordKeySpan = document.querySelector("#record-button-keybind-key");
+var selectedFile = null;
 
 fileInput.onchange = e => {
   let file = e.target.files[0];
+  if (!file.name.endsWith(".js")) {
+    error("File must be of .js type");
+    return;
+  }
+  selectedFile = file.path;
   console.log(file);
   document.querySelector("#file-name").innerHTML = file.name;
+}
+
+function error(errmsg) {
+
+}
+
+function closeError() {
+
 }
 
 function rebindMainKey() {
