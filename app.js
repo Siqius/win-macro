@@ -18,8 +18,9 @@ function rebindKey() {
     stop();
     start(macro);
   });
+
   globalShortcut.register(`CommandOrControl+${recordBind.toUpperCase()}`, () => {
-    //start/stop record
+
   });
   let toWrite = {
     "bind": startBind,
@@ -35,16 +36,13 @@ function rebindKey() {
 }
 
 function rebindMainKey(trash, key) {
-  console.log(key);
-  console.log("hello");
-  return;
-  rebindKey(key);
+  startBind = recordBind == key ? startBind : key;
+  rebindKey();
 }
 
-function rebindRecordKey(key) {
-  console.log(key);
-  return;
-  rebindKey(key);
+function rebindRecordKey(trash, key) {
+  recordBind = startBind == key ? recordBind : key;
+  rebindKey();
 }
 
 function minimizeApp() {
@@ -67,12 +65,14 @@ const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
     title: "main",
     width: 350,
-    height: 400,
+    height: 450,
     maximizable: false,
     autoHideMenuBar: true,
     frame: false,
     resizable: false,
     show: false,
+    opacity: 0.9,
+    alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
@@ -82,7 +82,6 @@ const createMainWindow = () => {
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   })
-  app.disableHardwareAcceleration();
 }
 
 const createSettingsWindow = async () => {

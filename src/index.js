@@ -1,5 +1,6 @@
 const fileInput = document.querySelector("#select-file");
-const recordKeySpan = document.querySelector("#record-button-keybind-key");
+const recordKeySpan = document.querySelector("#record-keybind");
+const mainKeySpan = document.querySelector("#main-keybind")
 var selectedFile = null;
 
 fileInput.onchange = e => {
@@ -9,7 +10,6 @@ fileInput.onchange = e => {
     return;
   }
   selectedFile = file.path;
-  console.log(file);
   document.querySelector("#file-name").innerHTML = file.name;
 }
 
@@ -52,9 +52,18 @@ function rebindKey(event, bind) {
     return;
   }
   if (document.bind === "main") {
+    if (recordKeySpan.innerHTML == key) {
+      alert("Cannot use the same key as recording keybind");
+      return;
+    }
     window.electronAPI.rebindMainKey(key)
+    mainKeySpan.innerHTML = key;
   }
   else if (document.bind === "record") {
+    if (mainKeySpan.innerHTML == key) {
+      alert("Cannot use the same key as starting keybind");
+      return;
+    }
     window.electronAPI.rebindRecordKey(key);
     recordKeySpan.innerHTML = key;
   }
@@ -63,3 +72,23 @@ function rebindKey(event, bind) {
 function selectFile() {
   fileInput.click();
 }
+
+function retrieveSettings() {
+  fetch("./../settings.json")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error
+          (`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      document.querySelector("#main-keybind").innerHTML = data.bind;
+      document.querySelector("#record-keybind").innerHTML = data.record;
+    }
+    )
+    .catch((error) =>
+      console.error("Unable to fetch data:", error));
+}
+
+retrieveSettings();
