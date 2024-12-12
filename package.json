@@ -52,7 +52,8 @@
     "matcher": "^3.0.0",
     "mimic-response": "^1.0.1",
     "ms": "^2.1.2",
-    "node-addon-api": "^8.1.0",
+    "node-addon-api": "^8.3.0",
+    "node-gyp": "^11.0.0",
     "normalize-url": "^6.1.0",
     "object-keys": "^1.1.1",
     "once": "^1.4.0",
@@ -72,7 +73,7 @@
     "type-fest": "^0.13.1",
     "undici-types": "^5.26.5",
     "universalify": "^0.1.2",
-    "windows-input-controller": "^1.1.0",
+    "win-macro": "^1.0.2",
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },

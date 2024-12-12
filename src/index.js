@@ -5,12 +5,14 @@ var selectedFile = null;
 
 fileInput.onchange = e => {
   let file = e.target.files[0];
-  if (!file.name.endsWith(".js")) {
-    error("File must be of .js type");
+  if (!file.name.endsWith(".txt")) {
+    error("File must be of .txt type");
     return;
   }
   selectedFile = file.path;
   document.querySelector("#file-name").innerHTML = file.name;
+  console.log(selectedFile);
+  window.electronAPI.updateFilePath(selectedFile);
 }
 
 function error(errmsg) {

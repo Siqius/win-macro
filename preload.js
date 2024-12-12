@@ -16,5 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
     closeApp: (title) => ipcRenderer.send("closeApp", title),
     closeWindow: (title) => ipcRenderer.send("closeWindow", title),
     openSettings: (title) => ipcRenderer.send("openSettings", title),
+    updateFilePath: (title) => ipcRenderer.send("updateFilePath", title),
   })
 })

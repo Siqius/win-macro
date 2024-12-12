@@ -1,9 +1,8 @@
 import { app, BrowserWindow, globalShortcut, ipcMain } from "electron";
-import { start, stop } from "windows-input-controller";
+import { start, stop, jsonToText, textToJson } from "win-macro";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import data from "./settings.json" assert { type: "json" };
-import macro from "./macro.js";
+import data from "./settings.json" with { type: "json" };
 import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,15 +11,26 @@ const __dirname = path.dirname(__filename);
 var startBind = data.bind;
 var recordBind = data.record;
 
+var macroRunning = false;
+
+var pathToMacro;
+var macro;
+
 function rebindKey() {
   globalShortcut.unregisterAll();
   globalShortcut.register(`CommandOrControl+${startBind.toUpperCase()}`, () => {
-    stop();
+    if (macroRunning) {
+      stop();
+      macroRunning = false;
+      return;
+    }
     start(macro);
+    macroRunning = true;
+    return;
   });
 
   globalShortcut.register(`CommandOrControl+${recordBind.toUpperCase()}`, () => {
-
+    // record
   });
   let toWrite = {
     "bind": startBind,
@@ -35,12 +45,12 @@ function rebindKey() {
   });
 }
 
-function rebindMainKey(trash, key) {
+function rebindMainKey(_, key) {
   startBind = recordBind == key ? startBind : key;
   rebindKey();
 }
 
-function rebindRecordKey(trash, key) {
+function rebindRecordKey(_, key) {
   recordBind = startBind == key ? recordBind : key;
   rebindKey();
 }
@@ -59,6 +69,23 @@ function closeWindow() {
 
 function openSettings() {
   createSettingsWindow();
+}
+
+function updateFilePath(_, filePath) {
+  pathToMacro = filePath;
+  try {
+    fs.readFile(pathToMacro, 'utf8', (err, data) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      macro = textToJson(data)
+
+      console.log(macro);
+    })
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 const createMainWindow = () => {
@@ -112,6 +139,7 @@ app.whenReady().then(() => {
   ipcMain.on("closeApp", closeApp);
   ipcMain.on("closeWindow", closeWindow);
   ipcMain.on("openSettings", openSettings);
+  ipcMain.on("updateFilePath", updateFilePath);
 
   rebindKey();
   createMainWindow();
