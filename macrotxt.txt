@@ -1,0 +1,1 @@
+-1;2000;click left press 500;lick left release 500;-

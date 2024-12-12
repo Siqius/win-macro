@@ -8,6 +8,8 @@ import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+var mainWindow;
+
 var startBind = data.bind;
 var recordBind = data.record;
 
@@ -73,23 +75,21 @@ function openSettings() {
 
 function updateFilePath(_, filePath) {
   pathToMacro = filePath;
-  try {
-    fs.readFile(pathToMacro, 'utf8', (err, data) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      macro = textToJson(data)
-
-      console.log(macro);
-    })
-  } catch (e) {
-    console.log(e);
-  }
+  fs.readFile(pathToMacro, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    try {
+      macro = textToJson(data);
+    } catch (e) {
+      mainWindow.webContents.send('error-message', { 'message': e.message });
+    }
+  })
 }
 
 const createMainWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     title: "main",
     width: 350,
     height: 450,

@@ -3,7 +3,7 @@ const recordKeySpan = document.querySelector("#record-keybind");
 const mainKeySpan = document.querySelector("#main-keybind")
 var selectedFile = null;
 
-fileInput.onchange = e => {
+fileInput.onchange = async e => {
   let file = e.target.files[0];
   if (!file.name.endsWith(".txt")) {
     error("File must be of .txt type");
@@ -11,12 +11,10 @@ fileInput.onchange = e => {
   }
   selectedFile = file.path;
   document.querySelector("#file-name").innerHTML = file.name;
-  console.log(selectedFile);
-  window.electronAPI.updateFilePath(selectedFile);
 }
 
 function error(errmsg) {
-
+  console.log(errmsg);
 }
 
 function closeError() {

@@ -73,7 +73,7 @@
     "type-fest": "^0.13.1",
     "undici-types": "^5.26.5",
     "universalify": "^0.1.2",
-    "win-macro": "^1.0.2",
+    "win-macro": "^1.1.0",
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },

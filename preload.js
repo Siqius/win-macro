@@ -18,4 +18,6 @@ window.addEventListener('DOMContentLoaded', () => {
     openSettings: (title) => ipcRenderer.send("openSettings", title),
     updateFilePath: (title) => ipcRenderer.send("updateFilePath", title),
   })
+
+  ipcRenderer.on('error-message', (evt, message) => { error(message.message); });
 })
