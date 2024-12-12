@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  user-select: none;
+  font-family: "Oxanium", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  border-radius: 5px;
+  div {
+    border-radius: 0;
+  }
+}
+
+button {
+  margin: 0;
+  padding: 2px 0 2px 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #323232;
+}
+
+#main-div {
+  button {
+    width: 22%;
+    aspect-ratio: 3/1;
+    cursor: pointer;
+    background-color: #212121;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border: 0.1rem solid #848484;
+    margin-left: calc(7%);
+    transition: 100ms;
+
+    &:hover {
+      border: 0.2rem solid #a0a0a0;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input {
+    margin-left: 10%;
+    margin-top: 7%;
+    width: 80%;
+    aspect-ratio: 8/1;
+    background-color: #3d3d3d;
+    border: 0.2rem solid #848484;
+    text-indent: 2%;
+
+    &::placeholder {
+      color: #909090;
+      font-size: 0.7rem;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+#header {
+  width: 100%;
+  height: 10%;
+  background-color: #232323;
+  user-select: all;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: space-between;
+
+  * {
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+    user-select: none;
+    -webkit-app-region: no-drag;
+  }
+
+  #logo-div {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    img {
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  #header-buttons-div {
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    float: right;
+
+    button {
+      background-color: #00000000;
+      height: 100%;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+
+      img {
+        transition: 100ms;
+        height: 60%;
+        margin-top: 10%;
+        aspect-ratio: 1/1;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.219);
+      }
+    }
+
+    #close-button:hover {
+      background-color: red;
+    }
+  }
+}
+
+#main-div {
+  width: 100%;
+  height: 90%;
+}
+
+#macro-section {
+  width: 100%;
+  height: 30%;
+  background-color: #323232;
+  border-top: #161616 solid 0.2rem;
+  margin-top: -0.2rem;
+
+  #text-section {
+    width: 100%;
+    height: 35%;
+    position: relative;
+
+    h2 {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: white;
+    }
+  }
+
+  #button-section {
+    width: 100%;
+    height: 49%;
+    margin-top: 3%;
+
+    h3 {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.8rem;
+      max-width: 9rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: bold;
+    }
+
+    input {
+      display: none;
+    }
+
+    #select-macro-button {
+      width: 27%;
+      aspect-ratio: 3.3/1;
+    }
+  }
+}
+
+#record-section {
+  width: 100%;
+  height: 40%;
+  background-color: #272727;
+  border-top: #161616 solid 0.2rem;
+  margin-top: -0.2rem;
+  display: flex;
+  flex-direction: column;
+
+  #top-section {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+
+    #left-section {
+      width: 50%;
+      height: 100%;
+
+      ::after {
+        content: "";
+        position: absolute;
+        margin: auto;
+        right: 0;
+        bottom: 40%;
+        left: 0;
+        height: 15%;
+        width: 2px;
+        background-color: #323232;
+      }
+
+      h2 {
+        margin-top: 6%;
+        margin-left: 10%;
+        color: white;
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        color: white;
+        font-size: 0.93rem;
+        margin-left: 10%;
+        margin-top: 5%;
+      }
+
+      div {
+        height: 30%;
+        margin-left: 10%;
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+
+        p {
+          color: white;
+          font-size: 0.8rem;
+          margin-top: 5.5%;
+        }
+
+        button {
+          width: 40%;
+          aspect-ratio: 3/1;
+          margin-top: 0%;
+        }
+
+        div {
+          width: 20px;
+          height: 20px;
+          margin-top: 4%;
+          margin-left: 9%;
+          background-color: rgba(255, 0, 0, 0.144);
+          border-radius: 100%;
+          aspect-ratio: 1/1;
+        }
+      }
+    }
+
+    #right-section {
+      width: 50%;
+      height: 100%;
+
+      h3 {
+        color: white;
+        font-size: 0.93rem;
+        margin-left: 10%;
+        margin-top: 28%;
+      }
+
+      input {
+        margin-left: 10%;
+        margin-top: 7%;
+        width: 70%;
+        aspect-ratio: 8/1;
+        background-color: #3d3d3d;
+        border: 0.2rem solid #848484;
+        text-indent: 2%;
+
+        &::placeholder {
+          color: #909090;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  #bottom-section {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+
+    button {
+      width: 30%;
+      height: 50%;
+      margin: 0;
+      margin-top: 4%;
+      transition: 0.1s;
+    }
+
+    #discard-button {
+      margin-left: 15%;
+
+      &:hover {
+        border: 0.2rem solid rgba(255, 0, 13, 0.74);
+      }
+    }
+
+    #save-button {
+      margin-left: 10%;
+
+      &:hover {
+        border: 0.2rem solid rgba(0, 255, 0, 0.74);
+      }
+    }
+  }
+}
+
+#start-macro-section {
+  width: 100%;
+  height: 30%;
+  background-color: #323232;
+  border-top: #161616 solid 0.2rem;
+  margin-top: -0.2rem;
+  display: flex;
+  flex-direction: column;
+
+  #upper {
+    width: 95%;
+    height: 50%;
+
+    h2 {
+      width: 100%;
+      height: 100%;
+      margin-top: 3%;
+      margin-left: 5%;
+      color: white;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+  }
+
+  #bottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+
+    #left {
+      width: 33%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-size: 0.8rem;
+        margin-left: 15%;
+        color: white;
+      }
+
+      input {
+        margin-left: 15%;
+      }
+    }
+
+    #middle {
+      width: 33%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-size: 0.8rem;
+        margin-left: 10%;
+        color: white;
+      }
+    }
+
+    #right {
+      width: 33%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+
+      p {
+        font-size: 0.8rem;
+        margin-top: 13%;
+        color: white;
+      }
+
+      button {
+        width: 60%;
+        height: 65%;
+      }
+    }
+  }
+}
+
+.record-animation-div {
+  animation: recordAnimation infinite;
+  animation-duration: 1s;
+}
+
+@keyframes recordAnimation {
+  0% {
+    background-color: rgb(255, 0, 0);
+  }
+
+  30% {
+    background-color: rgb(255, 0, 0);
+  }
+
+  50% {
+    background-color: rgba(255, 0, 0, 0.144);
+  }
+
+  80% {
+    background-color: rgba(255, 0, 0, 0.144);
+  }
+
+  100% {
+    background-color: rgb(255, 0, 0);
+  }
+}
