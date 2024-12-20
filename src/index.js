@@ -4,16 +4,46 @@ const mainKeySpan = document.querySelector("#main-keybind")
 var selectedFile = null;
 
 fileInput.onchange = async e => {
-  let file = e.target.files[0];
-  if (!file.name.endsWith(".txt")) {
+  console.log("TRYING");
+  updateFile(e.target.files[0].path);
+}
+
+async function updateFile(path) {
+  if (!path) return;
+  if (!path.endsWith(".txt")) {
     error("File must be of .txt type");
     return;
   }
-  selectedFile = file.path;
-  document.querySelector("#file-name").innerHTML = file.name;
+  let repeat = document.querySelector("#repeat-input").value;
+  console.log(repeat);
+  if (!repeat) {
+    error("Fill repeat input.");
+    return;
+  }
+  if (Number.isNaN(repeat)) {
+    error("Repeat must be an integer.");
+    return;
+  }
+
+  let startDelay = document.querySelector("#delay-input").value;
+  console.log(startDelay);
+  if (!startDelay) {
+    error("Fill startdelay input.");
+    return;
+  }
+  console.log(typeof startDelay);
+  if (Number.isNaN(startDelay)) {
+    error("Startdelay must be an integer.");
+    return;
+  }
+
+  document.querySelector("#file-name").innerHTML = path.split("\\")[path.split("\\").length - 1];
+  console.log(repeat);
+  window.electronAPI.updateFilePath({ "filePath": path, "repeat": repeat, "startDelay": startDelay });
 }
 
 function error(errmsg) {
+  fileInput.value = "";
   console.log(errmsg);
 }
 
@@ -74,7 +104,7 @@ function selectFile() {
 }
 
 function retrieveSettings() {
-  fetch("./../settings.json")
+  fetch("./../data.json")
     .then((res) => {
       if (!res.ok) {
         throw new Error
@@ -85,6 +115,7 @@ function retrieveSettings() {
     .then((data) => {
       document.querySelector("#main-keybind").innerHTML = data.bind;
       document.querySelector("#record-keybind").innerHTML = data.record;
+      updateFile(data.lastFile);
     }
     )
     .catch((error) =>
@@ -92,3 +123,9 @@ function retrieveSettings() {
 }
 
 retrieveSettings();
+
+window.addEventListener('DOMContentLoaded', () => {
+  window.electronAPI.onMessage((event, message) => {
+    error(message.message);
+  });
+});
