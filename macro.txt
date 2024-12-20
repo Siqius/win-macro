@@ -1,0 +1,1 @@
+click left press 1000;key b press 50;key b release 100;click left release 100;
