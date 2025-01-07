@@ -4,7 +4,7 @@
     "electron": "^31.4.0",
     "electron-builder": "^25.1.8"
   },
-  "name": "autoclicker",
+  "name": "win-macro",
   "version": "1.0.0",
   "type": "module",
   "description": "Autoclicker/Macro app built in electronjs",
@@ -75,7 +75,7 @@
     "type-fest": "^0.13.1",
     "undici-types": "^5.26.5",
     "universalify": "^0.1.2",
-    "win-macro": "^2.0.0",
+    "win-macro": "^2.1.0",
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },

@@ -94,6 +94,7 @@ function updateFilePath(_, param) {
       let macroText = `${param.repeat};${param.startDelay};${data}`;
       console.log(macroText);
       macro = textToJson(macroText);
+      console.log(macro);
       lastFile = param.filePath;
       updateDataFile();
     } catch (e) {
